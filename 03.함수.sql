@@ -142,7 +142,7 @@ SELECT RTRIM('     tjoeun     ')||'학원' FROM DUAL;
  -- 단어별로 사라지는게 아니라 하나하나 사라지는것 즉, 'J', 'A', 'V'를 본다는 것. 다른글자가 나오는순간 끝남.
 
 -- 왼쪽 기준
-SELECT LTRIM('JAVAZZJAVASCRIPT', 'JAVA') FROM DUAL;
+SELECT LTRIM('JAAVAZZJAVASCRIPT', 'JAVA') FROM DUAL;
 SELECT LTRIM('BACACABCFIACB', 'ABC') FROM DUAL;  -- 'A', 'B', 'C'
 SELECT LTRIM('37284BAC38290', '0123456789') FROM DUAL; -- '0', '1', .. ,'9' 
 
