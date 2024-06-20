@@ -110,7 +110,22 @@ INSERT INTO MEMBER VALUES(null,null,null,null,null,null,null,null);
         
         종류 : NOT NULL, UNIQUE, PRIMARY KEY, CHECK(조건), FOREIGN KEY
  */
+/
+--NOT NULL 제약조건
+CREATE TABLE MEM_NOTNULL(
+    MEM_NO NUMBER NOT NULL,
+    MEM_ID VARCHAR2(20) NOT NULL,
+    MEM_PWD VARCHAR2(20) NOT NULL,
+    MEM_NAME VARCHAR2(20) NOT NULL,
+    GENDER CHAR(3),
+    PHONE VARCHAR2(13),
+    EMAIL VARCHAR2(50)
+);
 
+INSERT INTO MEM_NOTNULL VALUES(1,'user01','pass01', '이고잉','여', '010-1234-5678', 'user01@gmail.com');
+INSERT INTO MEM_NOTNULL VALUES(2,'user01',null, '이고잉','여', null, 'user01@gmail.com'); --비밀번호의 null값 허용 안함
+-- NOT NULL 제약 조건에 위배되는 오류
+INSERT INTO MEM_NOTNULL VALUES(1,'user01','pass03', '김앤북','여', '010-1234-0000', 'user03@gmail.com');
 /*
        
        제약 조건을 부여하는 방식 2가지
@@ -573,7 +588,7 @@ CREATE TABLE EMPLOYEE_COPY
 AS SELECT *
 FROM EMPLOYEE;
 -- 컬럼, 데이터 값 복사 됨
--- 제약 조건은 NOT NULL 만 복사됨, 나미저는 안된다.
+-- 제약 조건은 NOT NULL 만 복사됨, 나머지는 안된다.
 -- FRIMARY KEY, DEFAULT, COMMENT ... 는 복사가 안된다
 
 /*
