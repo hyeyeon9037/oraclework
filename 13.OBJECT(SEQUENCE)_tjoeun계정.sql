@@ -42,6 +42,7 @@ MAXVALUE 510
 NOCYCLE
 NOCACHE;
 -- 캐시 사이클 사용안하겠다는소리
+--NOCACHE는 미리 번호를 만들지 않겠다는소리
 
 /*
     2. 시퀀스 사용
@@ -64,6 +65,53 @@ SELECT SEQ_EMPNO.NEXTVAL FROM DUAL; -- 510
 SELECT SEQ_EMPNO.NEXTVAL FROM DUAL; -- 오류 : 지정한 MAXVALUE를 초과했기 때문에 오류가난다.
 SELECT SEQ_EMPNO.CURRVAL FROM DUAL; -- 510 : 맨마지막으로 성공한 값을 나오기 때문에 510이 나온다!
 
+--------------------------------------------------------------------------------
+
+/*
+    3. 시퀀스 구조 변경
+    
+    ALTER SEQUENCE 시퀀스명
+    [INCREMENT BY 숫자]
+    [MAXVALUE 숫자]
+    [MINVALUE 숫자]
+    [CYCLE | NOCYCLE]
+    [CACHE 바이트크기 | NOCACHE]
+    
+    **주의 : START WITH는 변경 불가
+*/
+
+-- SEQ_EMPNO 변경
+ALTER SEQUENCE SEQ_EMPNO
+INCREMENT BY 10
+MAXVALUE 600;
+
+SELECT SEQ_EMPNO.NEXTVAL FROM DUAL; -- 위에서 510이 끝났기때문에 +10 해서 520 댄것!
+
+
+--------------------------------------------------------------------------------
+
+/*
+    4. 시퀀스 삭제
+*/
+
+DROP SEQUENCE SEQ_EMPNO;
+
+
+--------------------------------------------------------------------------------
+
+/*
+  *실제 적용
+*/
+
+CREATE SEQUENCE SEQ_EID
+START WITH 401
+NOCACHE;
+
+INSERT INTO EMPLOYEE (EMP_ID, EMP_NAME, EMP_NO, JOB_CODE, HIRE_DATE)
+VALUES(SEQ_EID.NEXTVAL, '유재남','101001-1283948', 'J1', SYSDATE);
+
+INSERT INTO EMPLOYEE (EMP_ID, EMP_NAME, EMP_NO, JOB_CODE, HIRE_DATE)
+VALUES(SEQ_EID.NEXTVAL, '송미영','171101-4283948', 'J2', SYSDATE);
 
 
 
