@@ -64,3 +64,11 @@ alter session set "_oracle_script" = true;
 create user DDL identified by 1234;
 GRANT RESOURCE, CONNECT TO DDL;
 alter user DDL default tablespace users quota unlimited on users;
+
+--JSP 사용자 만들기
+alter session set "_oracle_script" = true;
+create user JSP identified by 1234;
+GRANT RESOURCE, CONNECT TO JSP;
+alter user JSP default tablespace users quota unlimited on users;
+
+
