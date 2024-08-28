@@ -71,4 +71,16 @@ create user JSP identified by 1234;
 GRANT RESOURCE, CONNECT TO JSP;
 alter user JSP default tablespace users quota unlimited on users;
 
+--MYBATIS 사용자 만들기
+alter session set "_oracle_script" = true;
+create user MYBATIS identified by 1234;
+GRANT RESOURCE, CONNECT TO MYBATIS;
+alter user MYBATIS default tablespace users quota unlimited on users;
+
+--SPRINGBOOT 사용자 만들기
+alter session set "_oracle_script" = true;
+create user springboot identified by 1234;
+GRANT RESOURCE, CONNECT TO springboot;
+alter user springboot default tablespace users quota unlimited on users;
+
 
