@@ -83,4 +83,15 @@ create user springboot identified by 1234;
 GRANT RESOURCE, CONNECT TO springboot;
 alter user springboot default tablespace users quota unlimited on users;
 
+--project ECR 사용자 만들기
+alter session set "_oracle_script" = true;
+create user ECR identified by 1234;
+GRANT RESOURCE, CONNECT TO ECR;
+alter user ECR default tablespace users quota unlimited on users;
+
+--project ECR 사용자 만들기
+alter session set "_oracle_script" = true;
+create user dicom identified by 1234;
+GRANT RESOURCE, CONNECT TO dicom;
+alter user dicom default tablespace users quota unlimited on users;
 
